@@ -26,15 +26,6 @@ class Recaptcha_VerifyService extends BaseApplicationComponent
 
 	    $client = new \Guzzle\Http\Client();
 
-	    $body = array(
-	    	'body' => [
-	    		'params' => [
-		    		'secret' =>  $settings->attributes['secretKey'],
-		    		'response' => $data
-	    		]
-	    	]
-	    );
-
 	   	$request = $client->post($base);
 	   	$request->addPostFields($params);
 	    $result = $client->send($request);
