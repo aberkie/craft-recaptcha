@@ -21,7 +21,8 @@ class Recaptcha_ServiceController extends BaseController
 			$this->forward('users/saveUser');
 		} else {
             craft()->urlManager->setRouteVariables(array(
-               "Failed Recaptcha validation",
+               'errors' => array("Failed Recaptcha validation",
+               )
             ));
 		}
 	}
