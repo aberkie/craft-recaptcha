@@ -18,7 +18,7 @@ class Recaptcha_ServiceController extends BaseController
 		
 		if ($verified)
 		{
-			$this->forward('users/saveUser');
+			$this->forward('users/saveUser', false);
 		}
 		else
 		{
