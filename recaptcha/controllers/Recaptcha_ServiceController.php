@@ -15,7 +15,7 @@ class Recaptcha_ServiceController extends BaseController
         $this->requirePostRequest();
         $captcha = craft()->request->getPost('g-recaptcha-response');
         $verified = craft()->recaptcha_verify->verify($captcha);
-        
+
         if ($verified)
         {
             $this->forward('users/saveUser', false);

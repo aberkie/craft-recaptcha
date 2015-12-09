@@ -11,25 +11,25 @@ namespace Craft;
 class Recaptcha_RenderService extends BaseApplicationComponent
 {
 
-	public function render($params)
-	{
-		$plugin = craft()->plugins->getPlugin('recaptcha');
-	    $settings = $plugin->getSettings();
+    public function render($params)
+    {
+        $plugin = craft()->plugins->getPlugin('recaptcha');
+        $settings = $plugin->getSettings();
 
-	    $oldTemplatesPath = craft()->path->getTemplatesPath();
-	    $newTemplatesPath = craft()->path->getPluginsPath().'recaptcha/templates/';
-	    craft()->path->setTemplatesPath($newTemplatesPath);
+        $oldTemplatesPath = craft()->path->getTemplatesPath();
+        $newTemplatesPath = craft()->path->getPluginsPath().'recaptcha/templates/';
+        craft()->path->setTemplatesPath($newTemplatesPath);
 
-	    $vars = array(
-	    	'id' => 'gRecaptchaContainer',
-	    	'siteKey' => $settings->attributes['siteKey']
-	    );
+        $vars = array(
+            'id' => 'gRecaptchaContainer',
+            'siteKey' => $settings->attributes['siteKey']
+        );
 
-	    $html = craft()->templates->render('frontend/recaptcha.html', $vars);
-		craft()->path->setTemplatesPath($oldTemplatesPath);
+        $html = craft()->templates->render('frontend/recaptcha.html', $vars);
+        craft()->path->setTemplatesPath($oldTemplatesPath);
 
-		craft()->templates->includeJsFile('https://www.google.com/recaptcha/api.js');
+        craft()->templates->includeJsFile('https://www.google.com/recaptcha/api.js');
 
-		echo $html;
-	}
+        echo $html;
+    }
 }

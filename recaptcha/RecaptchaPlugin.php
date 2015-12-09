@@ -12,38 +12,38 @@ namespace Craft;
 
 class RecaptchaPlugin extends BasePlugin
 {
-	function getName()
-	{
-		return Craft::t('reCAPTCHA for Craft');
-	}
-	
-	function getVersion()
-	{
-		return '1.0';
-	}
-	
-	function getDeveloper()
-	{
-		return 'Aaron Berkowitz';
-	}
-	
-	function getDeveloperUrl()
-	{
-		return 'https://github.com/aberkie';
-	}
+    function getName()
+    {
+        return Craft::t('reCAPTCHA for Craft');
+    }
 
-	protected function defineSettings()
-	{
-		return array(
-			'siteKey' => array(AttributeType::Mixed, 'default' => ''),
-			'secretKey' => array(AttributeType::Mixed, 'default' => '')
-		);
-	}
+    function getVersion()
+    {
+        return '1.0';
+    }
 
-	public function getSettingsHtml()
-	{
-		return craft()->templates->render('recaptcha/settings', array(
-			'settings' => $this->getSettings()
-		));
-	}
+    function getDeveloper()
+    {
+        return 'Aaron Berkowitz';
+    }
+
+    function getDeveloperUrl()
+    {
+        return 'https://github.com/aberkie';
+    }
+
+    protected function defineSettings()
+    {
+        return array(
+            'siteKey' => array(AttributeType::Mixed, 'default' => ''),
+            'secretKey' => array(AttributeType::Mixed, 'default' => '')
+        );
+    }
+
+    public function getSettingsHtml()
+    {
+        return craft()->templates->render('recaptcha/settings', array(
+            'settings' => $this->getSettings()
+        ));
+    }
 }

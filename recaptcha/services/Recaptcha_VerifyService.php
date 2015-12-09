@@ -11,36 +11,36 @@ namespace Craft;
 class Recaptcha_VerifyService extends BaseApplicationComponent
 {
 
-	public function verify($data)
-	{
+    public function verify($data)
+    {
 
-		$base = "https://www.google.com/recaptcha/api/siteverify";
+        $base = "https://www.google.com/recaptcha/api/siteverify";
 
-		$plugin = craft()->plugins->getPlugin('recaptcha');
-	    $settings = $plugin->getSettings();
-	   
-	    $params = array(
-	    	'secret' =>  $settings->attributes['secretKey'],
-	    	'response' => $data
-	    );
+        $plugin = craft()->plugins->getPlugin('recaptcha');
+        $settings = $plugin->getSettings();
 
-	    $client = new \Guzzle\Http\Client();
+        $params = array(
+            'secret' =>  $settings->attributes['secretKey'],
+            'response' => $data
+        );
 
-	   	$request = $client->post($base);
-	   	$request->addPostFields($params);
-	    $result = $client->send($request);
+        $client = new \Guzzle\Http\Client();
 
-	    if($result->getStatusCode() == 200)
-	    {
-	    	$json = $result->json();
-	    	if($json['success'])
-	    	{
-	    		return true;
-	    	} else {
-	    		return false;
-	    	}
-	    } else {
-	    	return false;
-	    }
-	}
+        $request = $client->post($base);
+        $request->addPostFields($params);
+        $result = $client->send($request);
+
+        if($result->getStatusCode() == 200)
+        {
+            $json = $result->json();
+            if($json['success'])
+            {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
