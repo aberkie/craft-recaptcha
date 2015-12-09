@@ -7,22 +7,25 @@ namespace Craft;
 class Recaptcha_ServiceController extends BaseController
 {
     protected $allowAnonymous = true;
-	/**
-	 * Handle the save user form request.
-	 */
-	public function actionSaveUser()
-	{
+    /**
+     * Handle the save user form request.
+     */
+    public function actionSaveUser()
+    {
         $this->requirePostRequest();
-		$captcha = craft()->request->getPost('g-recaptcha-response');
-		$verified = craft()->recaptcha_verify->verify($captcha);
-		
-		if ($verified)
-		{
-			$this->forward('users/saveUser');
-		} else {
+        $captcha = craft()->request->getPost('g-recaptcha-response');
+        $verified = craft()->recaptcha_verify->verify($captcha);
+        
+        if ($verified)
+        {
+            $this->forward('users/saveUser', false);
+        }
+        else
+        {
             craft()->urlManager->setRouteVariables(array(
-               "Failed Recaptcha validation",
+               'errors' => array('Failed Recaptcha validation',
+               )
             ));
-		}
-	}
+        }
+    }
 }
