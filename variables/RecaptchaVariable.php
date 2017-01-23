@@ -11,10 +11,9 @@ namespace Craft;
 
 class RecaptchaVariable
 {
-	public function render($params=null)
-	{
-		$return = craft()->recaptcha_render->render($params);
-		return $return;
-	}
-	
+    public function render($params=null)
+    {
+        $return = craft()->recaptcha_render->render($params);
+        return $return;
+    }
 }

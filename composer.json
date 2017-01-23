@@ -1,0 +1,14 @@
+{
+    "name": "ctigelaar/craft-recaptcha",
+    "description": "Google reCAPTCHA for Craft CMS",
+    "authors": [
+        {
+            "name": "Aaron Berkowitz",
+            "homepage": "https://github.com/aberkie"
+        }
+    ],
+    "type": "craft-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
