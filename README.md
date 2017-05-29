@@ -12,7 +12,7 @@ Craft plugin to dispaly Google's new reCaptcha form widget and validate response
 To display a reCAPTCHA widget in any template, use `{{craft.recaptcha.render()}}`.
 
 ### User Registration Form
-To use the Recaptcha in a front-end [User Registration](http://buildwithcraft.com/docs/templating/user-registration-form) form, simply do this:
+To use the Recaptcha in a front-end [User Registration](https://craftcms.com/docs/templating/user-registration-form) form, simply do this:
 
     <form method="post" accept-charset="UTF-8" >
         {{ getCsrfInput() }}
